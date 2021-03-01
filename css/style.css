@@ -8,7 +8,6 @@ html,body {
 }
 ul { list-style-type: none; }
 a {	text-decoration: none; }
-
 /*---- Header ----*/
 .navbar-style {
     color: #f5f5f5;
@@ -76,9 +75,6 @@ a {	text-decoration: none; }
 
 
 
-
-
-
 /*---- CART ----*/
 .cartItems {
     background-color: #be9fe1 ;
@@ -97,11 +93,61 @@ a {	text-decoration: none; }
 }
 
 
+/* LOGIN FORM */
 
+.login_form {
+    background-color: paleturquoise;
+}
 
 /*---- FOOTER ----*/
 .footer-style{
     background-color: #4f3961;
     color:white;
     border: 0;
+}
+
+
+
+
+
+.contact-wrapper {
+	padding: 50px;
+	display: grid;
+	grid-column-gap: 20px;
+	grid-template-columns: 1fr;
+	grid-template-areas: 
+	'form_title'
+    'form'
+}
+
+.contact-title {
+	grid-area: form_title;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-orientation: upright;
+	border-radius: 20px;
+	background-color: pink;
+}
+
+.contact-title h3 {
+	font-size: 3.2rem;
+	color: purple;
+}
+.contact-form {
+	grid-area: form;
+	background-color: white;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.form-wrapper {
+	padding-top: 70px;
+	padding-bottom: 70px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-areas:
+	'name'
+	'password'
+	'f_btn'
 }
