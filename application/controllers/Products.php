@@ -19,9 +19,43 @@ class Products extends CI_Controller {
             
         }
 
+        /***    NEW CODE          *************/
+
+        // INSERT FUNCTION
+       public function addProduct(){
+        $this->load->model('Products_model');
+
+        $data = array(
+             'productName' => $this->input->post('productName'),
+             'productCategory' => $this->input->post('productCategory'),
+             'productPrice' => $this->input->post('productPrice'),
+             'productStock' => $this->input->post('productStock'),
+             #'productImage' => $this->input->post('productImage'),
+         );
+     
+         $this->Products_model->addProduct($data);
+         redirect(base_url()."Products/dispProducts");
+     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /******* END *************/
 
        // INSERT FUNCTION
-       public function addProduct(){
+        /* OLD CODE
+
+
+        public function addProduct(){
            $this->load->model('Products_model');
             $data = array(
                 'productName' => $this->input->post('productName'),
@@ -36,6 +70,9 @@ class Products extends CI_Controller {
         }
 
 
+        */
+
+        
         // EDIT FUNCTION
         public function editProduct($product_id){
 

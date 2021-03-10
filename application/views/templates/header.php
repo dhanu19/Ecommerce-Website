@@ -20,10 +20,13 @@
   <!-- NAVIGATION BAR -->
   <nav class="navigation-style navbar navbar-expand-lg navbar-dark navbar-style">
     <div class="container">
-      <a class="navbar-brand" href="/ecommerce">FASHIONISTA.com</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <a class="navbar-brand" href="/ecommerce">FASHIONISTA.com</a>
+      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item"><a class="nav-link " aria-current="page" href="<?php echo base_url(); ?>">Home</a></li>
@@ -34,11 +37,48 @@
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
+      
+      <ul class="nav navbar-nav navbar-right">
+
+        <?php if(!$this->session->userdata('logged_in')): ?>
+
+          <li><a style="margin-left: 10px" href="<?php echo base_url(); ?>customers/login">Login</a></li>
+          <li><a style="margin-left: 10px" href="<?php echo base_url(); ?>customers/register">Register</a></li>
+      
+        <?php endif;?>
+        
+        <?php if($this->session->userdata('logged_in')): ?>
+        <li><a style="margin-left: 10px" href="<?php echo base_url(); ?>/cart">Cart</a></li>
+        <li><a style="margin-left: 10px" href="<?php echo base_url(); ?>customers/logout">Logout</a></li>
+        <?php endif;?>
+      </ul>
     </div>
-    <button style="margin-right: 30px" class="btn btn-outline-success" type="submit"><a  href="<?php echo base_url(); ?>/cart">Cart</a></button>
+    
   </nav>
   <!-- NAVIGATION BAR end -->
 </header>
   <!-- HEADER END-->
 
-    
+
+
+<!-- Flash Messages -->
+
+<?php if($this->session->flashdata('customer_registered')): ?>
+<?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_registered').'</p>'; ?>
+<?php endif; ?>
+
+
+<?php if($this->session->flashdata('login_failed')): ?>
+<?php echo '<p class="alert alert-danger">'.$this->session->flashdata('login_failed').'</p>'; ?>
+<?php endif; ?>
+
+
+<?php if($this->session->flashdata('customer_loggedin')): ?>
+<?php echo '<p class="alert alert-success">'.$this->session->flashdata('customer_loggedin').'</p>'; ?>
+<?php endif; ?>
+
+
+<?php if($this->session->flashdata('customer_loggedout')): ?>
+<?php echo '<p class="alert alert-success">'.$this->session->flashdata('customer_loggedout').'</p>'; ?>
+<?php endif; ?>
+
